@@ -11,5 +11,6 @@
     "rtkDeck": "余分::漢字::ハイジグッズ",
     "override": true,
     "separator": " ・ ",
-    "generateKanjiCards": true
+    "generateKanjiCards": true,
+    "openCardBrowserKanji": false
 }

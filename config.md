@@ -27,13 +27,15 @@ If you have a `"Vocab"` field with 其の and an `"Expression"` field with そ�
 
 **"kanjiUrl":**  This is the online dictionary that your keywords will link to. By the default, it links to http://kanji.koohii.com/study/kanji/, but you can change it to https://jisho.org/search/ or your preferred dictionary here.
 
+**"openCardBrowserKanji":** If this is true, clicking the kanji for keywords will open the matching RTK card in Anki's browser instead. This requires KanjiVocab installed.
+
 **"rtkKanjiField":**  This is the name of the field in your RTK Deck where the Kanji (a single Kanji) is located.
 
 **"rtkKeywordField":**  This is the name of the field in your RTK Deck where the English keyword for the Kanji is located (they'll display next to the kanji).
 
 **"vocabField":**  This the field where the KanjiVocab add-on has already generated Vocab to, **This field must be added to your RTK Deck even if you're not using KanjiVocab.**
 
-**"vocabUrl":**  If you used KanjiVocab, this is where all the vocab words in your Destination field will link to (in a single link). Eg. If the Vocab is x漢字 and 練習 it will link to "[https://jisho.org/search/漢字%20練習](https://jisho.org/search/漢字%20練習)", the vocab is always appended at the end of the link. By the default, it links to the Kanji [keyword] first, and then to the Vocab. Keyword and Vocab may have their own dictionary link.
+**"vocabUrl":**  If you used KanjiVocab, this is where all the vocab words in your Destination field will link to (in a single link). Eg. If the Vocab is x漢字 and 練習 it will link to "[https://jisho.org/search/漢字%20練習](https://jisho.org/search/漢字%20練習)", the vocab is always appended at the end of the link. By the default, it links to the Kanji [keyword] first, and then to the Vocab. Keyword and Vocab may have their own dictionary link. If KanjiVocab already generates links or click actions for individual words, these will take priority.
 
 **"rtkKeywordDict":**  Not currently implemented, do ignore this field.
 

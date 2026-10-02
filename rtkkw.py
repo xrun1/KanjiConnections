@@ -3,8 +3,10 @@ from PyQt6.QtCore import *
 from PyQt6.QtGui import *
 from PyQt6.QtGui import QAction
 
-from aqt import mw
+from aqt import dialogs, mw
+from aqt.reviewer import Reviewer
 from anki.decks import DeckManager
+from anki.hooks import wrap
 from anki.notes import Note
 from aqt.utils import showInfo
 from anki.utils import stripHTML
@@ -26,7 +28,8 @@ vocabUrl= CONFIG['vocabUrl']
 kanjiUrl = CONFIG['kanjiUrl']
 rtkDeck = CONFIG['rtkDeck']
 separator = CONFIG['separator']
-OVERRIDE = CONFIG['override'] 
+OVERRIDE = CONFIG['override']
+linkToCardBrowser = CONFIG['openCardBrowserKanji']
 
 def getMessage(note):
     kanji = note[rtkKanjiField]
@@ -37,7 +40,14 @@ def getMessage(note):
         furikw = ''
         if keyword:
             furikw = f'[{keyword}]'
-        message = f"<p class='kw'><a class='keyword' href='{kanjiUrl}{kanji}'>{kanji}{furikw}</a><span class='kw-separator'>{separator}</span><a class='keyword-vocab' href='{vocabUrl}{search_string}'> {note[vocabField]}</a></p>"
+
+        a_attrs = f"href='{kanjiUrl}{kanji}'"
+        if linkToCardBrowser:
+            onclick = f"pycmd('kv/browse::nid:{note.id}'); return false;"
+            a_attrs = f"href='#' onclick=\"{onclick}\""
+
+        message = f"<p class='kw'><a class='keyword' {a_attrs}>{kanji}{furikw}</a><span class='kw-separator'>{separator}</span><a class='keyword-vocab' href='{vocabUrl}{search_string}'> {note[vocabField]}</a></p>"
+
     return message, kanji
 
 def generateCache(cache):
